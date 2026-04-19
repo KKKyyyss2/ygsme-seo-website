@@ -1,44 +1,45 @@
-/* 清爽浅蓝风 - 金边水汇会所 */
+/* 深色黑金高端风 */
 :root {
-    --bg-body: #f8f9fa;
-    --bg-card: #ffffff;
-    --bg-nav: #ffffff;
-    --primary: #1976d2;
-    --primary-light: #64b5f6;
-    --primary-grad: linear-gradient(135deg, #1976d2, #64b5f6);
-    --text-main: #333333;
-    --text-muted: #666666;
-    --border: #e0e0e0;
-    --shadow: 0 4px 16px rgba(25, 118, 210, 0.1);
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+    --bg-nav: rgba(10, 10, 10, 0.85);
+    --gold: #d4af37;
+    --gold-light: #f9d86c;
+    --text-main: #eaeaea;
+    --text-muted: #999999;
+    --border: #2a2a2a;
+    --shadow: 0 8px 32px rgba(212, 175, 55, 0.12);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg-body);
+    background: var(--bg-dark);
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.7;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Hero */
 .hero {
-    background: linear-gradient(180deg, #e3f2fd 0%, var(--bg-body) 100%);
-    padding: 2.5rem 1rem;
+    background: radial-gradient(circle at top right, #1a1a2e 0%, var(--bg-dark) 60%);
+    padding: 1.8rem 1rem;
     text-align: center;
     border-bottom: 1px solid var(--border);
 }
 
 .hero h1 {
-    font-size: 2.2rem;
-    color: var(--primary);
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 0.6rem;
+    letter-spacing: 1px;
 }
 
 .hero .subtitle {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     margin-bottom: 0.8rem;
     letter-spacing: 1px;
@@ -46,38 +47,37 @@ body {
 
 .hero .description {
     max-width: 800px;
-    margin: 0 auto 1.2rem;
-    color: #555;
-    font-size: 1rem;
+    margin: 0 auto 1rem;
+    color: #b0b0b0;
+    font-size: 0.95rem;
 }
 
 .cta-button {
     display: inline-block;
-    background: var(--primary-grad);
-    color: #fff;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #000;
     padding: 10px 24px;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(25, 118, 210, 0.35);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
 
-/* Navigation */
 .nav-bar {
     background: var(--bg-nav);
-    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0.7rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border);
+    padding: 0.6rem 0;
 }
 
 .nav-bar .container {
@@ -91,17 +91,17 @@ body {
 }
 
 .nav-bar a {
-    color: var(--primary);
+    color: var(--gold);
     text-decoration: none;
     font-weight: 500;
     padding: 0.3rem 0.6rem;
     border-radius: 6px;
     transition: background 0.2s;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .nav-bar a:hover {
-    background: rgba(25, 118, 210, 0.08);
+    background: rgba(212, 175, 55, 0.15);
 }
 
 .container {
@@ -110,9 +110,8 @@ body {
     padding: 0 1rem;
 }
 
-/* Page Header */
 .page-header {
-    background: linear-gradient(180deg, #bbdefb 0%, var(--bg-body) 100%);
+    background: linear-gradient(180deg, #1a1a2e 0%, var(--bg-dark) 100%);
     padding: 2rem 1rem 1.5rem;
     border-bottom: 1px solid var(--border);
 }
@@ -120,34 +119,33 @@ body {
 .page-header h1 {
     margin: 0.5rem 0;
     font-size: 1.8rem;
-    color: var(--primary);
+    color: var(--gold);
 }
 
 .page-header .subtitle {
     color: var(--text-muted);
+    font-size: 0.95rem;
 }
 
 .back-link {
-    color: var(--primary);
+    color: var(--gold);
     text-decoration: none;
     font-weight: 500;
 }
 
 .back-link:hover { text-decoration: underline; }
 
-/* Main Content */
 main { padding: 2rem 0; }
 
 article, .posts-grid {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1.8rem;
+    padding: 1.6rem;
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
 }
 
-/* 精选文章网格 */
 .posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -163,7 +161,7 @@ article, .posts-grid {
 }
 
 .post-card:hover {
-    border-color: var(--primary-light);
+    border-color: var(--gold);
     transform: translateY(-3px);
     box-shadow: var(--shadow);
 }
@@ -171,11 +169,11 @@ article, .posts-grid {
 .post-card h3 {
     margin: 0 0 0.7rem;
     font-size: 1.15rem;
-    color: #2c3e50;
+    color: var(--text-main);
 }
 
 .post-card h3 a { color: inherit; text-decoration: none; }
-.post-card h3 a:hover { color: var(--primary); }
+.post-card h3 a:hover { color: var(--gold); }
 
 .post-card p {
     color: var(--text-muted);
@@ -184,33 +182,31 @@ article, .posts-grid {
 }
 
 .read-more {
-    color: var(--primary);
+    color: var(--gold);
     text-decoration: none;
     font-weight: 600;
 }
 
 .read-more:hover { text-decoration: underline; }
 
-/* 标题 */
-h1 { font-size: 2rem; margin: 1.5rem 0 1rem; }
+h1 { font-size: 2rem; margin: 1.5rem 0 1rem; color: var(--gold); }
 h2 {
     font-size: 1.6rem;
     margin: 1.8rem 0 1rem;
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid var(--gold);
     padding-left: 1rem;
-    color: #2c3e50;
+    color: var(--text-main);
 }
 h3 {
     font-size: 1.25rem;
     margin: 1.3rem 0 0.8rem;
-    color: #444;
+    color: #ddd;
 }
 
-p, li { color: #444; margin-bottom: 0.8rem; }
+p, li { color: #ccc; margin-bottom: 0.8rem; }
 ul, ol { margin-left: 1.5rem; margin-bottom: 1.2rem; }
 li { margin-bottom: 0.4rem; }
 
-/* 表格 */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -226,47 +222,43 @@ th, td {
     text-align: left;
 }
 th {
-    background: var(--primary);
-    color: white;
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--gold);
     font-weight: 600;
 }
 tr:last-child td { border-bottom: none; }
-tr:hover { background: rgba(25, 118, 210, 0.04); }
+tr:hover { background: rgba(212, 175, 55, 0.06); }
 
-/* 块引用 */
 blockquote {
-    background: #e3f2fd;
-    border-left: 4px solid var(--primary);
+    background: rgba(212, 175, 55, 0.08);
+    border-left: 4px solid var(--gold);
     padding: 1rem 1.2rem;
     margin: 1.5rem 0;
     font-style: italic;
-    color: #555;
+    color: #ddd;
     border-radius: 0 6px 6px 0;
 }
 
-/* 关键词盒子 */
 .keywords-box {
-    background: #e3f2fd;
-    border: 1px solid #bbdefb;
+    background: rgba(212, 175, 55, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     padding: 1rem 1.2rem;
     border-radius: 8px;
     margin: 2rem 0;
     font-size: 0.95rem;
 }
-.keywords-box strong { color: var(--primary); }
+.keywords-box strong { color: var(--gold); }
 
-/* 互动区域 */
 .interaction {
-    background: #e3f2fd;
-    border: 1px solid #bbdefb;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     padding: 1.3rem;
     border-radius: 8px;
     margin: 2rem 0;
 }
-.interaction a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.interaction a { color: var(--gold); text-decoration: none; font-weight: 600; }
 .interaction a:hover { text-decoration: underline; }
 
-/* Tags */
 .tags {
     margin-top: 1.8rem;
     padding-top: 0.9rem;
@@ -275,22 +267,20 @@ blockquote {
     color: var(--text-muted);
     word-spacing: 4px;
 }
-.tags a { color: var(--primary); text-decoration: none; }
+.tags a { color: var(--gold); text-decoration: none; }
 .tags a:hover { text-decoration: underline; }
 
-/* Footer */
 footer {
-    background: #fff;
+    background: #111;
     padding: 1.5rem 0;
     text-align: center;
     color: var(--text-muted);
     margin-top: 2rem;
     border-top: 1px solid var(--border);
 }
-footer a { color: var(--primary); text-decoration: none; }
+footer a { color: var(--gold); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-/* FAQ */
 details {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -301,16 +291,15 @@ details {
 details summary {
     font-weight: 600;
     cursor: pointer;
-    color: var(--primary);
+    color: var(--gold);
 }
 details p {
     margin-top: 0.8rem;
     padding-top: 0.8rem;
     border-top: 1px dashed var(--border);
-    color: #555;
+    color: #ccc;
 }
 
-/* 响应式 */
 @media (max-width: 768px) {
     .hero h1 { font-size: 1.8rem; }
     .nav-bar .container { gap: 0.6rem; }
