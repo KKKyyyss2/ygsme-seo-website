@@ -115,44 +115,40 @@
         </div>
     </footer>
     
+
+
 <script>
-(() => {
-    const container = document.getElementById('main-spa-container'); // 只切换 main 内容
+(function() {
+    const container = document.getElementById('spa-container');
     const navLinks = document.querySelectorAll('.nav-bar a');
-    let homeMainHTML = null;
+    const currentPath = location.pathname;
+    const isHome = currentPath === '/' || currentPath.endsWith('/index.html');
+    const homeMainHTML = isHome ? container.innerHTML : null;
 
-    // 保存首页 main 内容
-    const saveHomeMain = () => { if (!homeMainHTML) homeMainHTML = container.innerHTML; };
-    document.addEventListener('DOMContentLoaded', saveHomeMain);
+    function loadPage(path, push = true) {
+        const url = path.endsWith('.html') ? path : path + '.html';
+        fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+            .then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newContent = doc.getElementById('spa-container').innerHTML;
+                container.innerHTML = newContent;
+                if (push) history.pushState(null, '', path);
+                window.scrollTo(0, 0);
+                updateActive(path);
+            })
+            .catch(err => console.error('Page load error:', err));
+    }
 
-    const loadPage = async (url, addToHistory = true) => {
-        try {
-            const res = await fetch(url, { credentials: 'same-origin' });
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            const text = await res.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            // 组合：page-header + main container 内容
-            const pageHeader = doc.querySelector('.page-header');
-            const mainEl = doc.querySelector('main.container');
-            let html = '';
-            if (pageHeader) html += pageHeader.outerHTML;
-            if (mainEl) html += mainEl.innerHTML;
-            if (!html) throw new Error('No content');
-            container.innerHTML = html;
-            document.title = doc.title;
-            if (addToHistory) history.pushState({url}, '', url);
-            updateActive(url);
-        } catch (e) {
-            window.location.href = url;
-        }
-    };
-
-    const updateActive = (url) => {
+    function updateActive(url) {
+        if (!url.startsWith('/')) url = '/' + url;
         navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === url));
-    };
+    }
 
-    // 拦截导航点击
     document.addEventListener('click', (e) => {
         const a = e.target.closest('a');
         if (!a) return;
@@ -164,16 +160,14 @@
         loadPage(linkUrl.pathname);
     });
 
-    // 前进后退
     window.addEventListener('popstate', () => {
         const path = location.pathname;
-        if (path === '/' || path.endsWith('index.html')) {
-            if (homeMainHTML) container.innerHTML = homeMainHTML;
-            updateActive('index.html');
-        } else {
-            loadPage(path, false);
-        }
+        loadPage(path, false);
     });
+
+    // initial active
+    const initPath = currentPath === '/' ? '/index.html' : currentPath;
+    updateActive(initPath);
 })();
 </script>
 

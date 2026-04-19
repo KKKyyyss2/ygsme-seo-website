@@ -225,14 +225,19 @@
             <p>Telegram: <a href="https://t.me/s/ygsme">t.me/s/ygsme</a></p>
         </div>
     </footer>
+
+
 <script>
 (function() {
     const container = document.getElementById('spa-container');
     const navLinks = document.querySelectorAll('.nav-bar a');
-    const homeMainHTML = container.innerHTML;
+    const currentPath = location.pathname;
+    const isHome = currentPath === '/' || currentPath.endsWith('/index.html');
+    const homeMainHTML = isHome ? container.innerHTML : null;
 
     function loadPage(path, push = true) {
-        fetch(path + (path.endsWith('.html') ? '' : '.html'), {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+        const url = path.endsWith('.html') ? path : path + '.html';
+        fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
             .then(r => {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.text();
@@ -254,7 +259,6 @@
         navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === url));
     }
 
-    // intercept nav clicks
     document.addEventListener('click', (e) => {
         const a = e.target.closest('a');
         if (!a) return;
@@ -266,19 +270,13 @@
         loadPage(linkUrl.pathname);
     });
 
-    // on popstate (back/forward)
     window.addEventListener('popstate', () => {
         const path = location.pathname;
-        if (path === '/' || path.endsWith('index.html')) {
-            container.innerHTML = homeMainHTML;
-            updateActive('/index.html');
-        } else {
-            loadPage(path, false);
-        }
+        loadPage(path, false);
     });
 
-    // initial active state
-    const initPath = location.pathname === '/' ? '/index.html' : location.pathname;
+    // initial active
+    const initPath = currentPath === '/' ? '/index.html' : currentPath;
     updateActive(initPath);
 })();
 </script>
