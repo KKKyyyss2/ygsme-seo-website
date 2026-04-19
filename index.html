@@ -32,16 +32,7 @@
     </script>
 </head>
 <body>
-    <header class="hero">
-        <div class="container">
-            <h1>🇰🇭 柬埔寨金边|西港|波贝|财通|木牌|戈公会所导航</h1>
-            <p class="subtitle">按摩 | 水汇 | SPA | 马杀鸡 | 会所推荐 - 金边、西港、波贝、财通、木牌、戈公</p>
-            <p class="description">专注柬埔寨金边水汇服务，每日推荐优质按摩会所、马杀鸡场所，提供技师质量、价格透明、避坑指南，让你少走弯路。</p>
-            <a href="https://t.me/s/ygsme" class="cta-button" target="_blank">👉 关注Telegram频道</a>
-        </div>
-    </header>
-
-            <nav class="nav-bar">
+    <nav class="nav-bar">
         <div class="container">
             <a href="index.html">首页</a>
             <a href="article1.html">高端推荐</a>
@@ -51,8 +42,16 @@
             <a href="article5.html">新手指南</a>
         </div>
     </nav>
-
-    <main class="container">
+    <div id="spa-container">
+        <header class="hero">
+        <div class="container">
+            <h1>🇰🇭 柬埔寨金边|西港|波贝|财通|木牌|戈公会所导航</h1>
+            <p class="subtitle">按摩 | 水汇 | SPA | 马杀鸡 | 会所推荐 - 金边、西港、波贝、财通、木牌、戈公</p>
+            <p class="description">专注柬埔寨金边水汇服务，每日推荐优质按摩会所、马杀鸡场所，提供技师质量、价格透明、避坑指南，让你少走弯路。</p>
+            <a href="https://t.me/s/ygsme" class="cta-button" target="_blank">👉 关注Telegram频道</a>
+        </div>
+    </header>
+        <main class="container">
         <section class="intro">
             <h2>为什么选择金边水汇会所？</h2>
             <p>在金边，水汇会所（按摩、马杀鸡、洗浴中心）是重要的休闲娱乐方式。我们帮你筛选最优质的服务场所，避免踩坑，享受专业按摩体验。</p>
@@ -108,12 +107,72 @@
             <p>欢迎分享你的水汇体验，推荐优质会所。联系：<a href="https://t.me/s/ygsme">@JW469</a> (Telegram)</p>
         </section>
     </main>
-
+    </div>
     <footer>
         <div class="container">
             <p>&copy; 2024 金边水汇会所 - 专注柬埔寨金边水汇服务推荐</p>
             <p>联系频道: <a href="https://t.me/s/ygsme">https://t.me/s/ygsme</a></p>
         </div>
     </footer>
+    
+<script>
+(() => {
+    const container = document.getElementById('spa-container');
+    const navLinks = document.querySelectorAll('.nav-bar a');
+    let homeHTML = null;
+
+    const saveHome = () => { if (!homeHTML) homeHTML = container.innerHTML; };
+    document.addEventListener('DOMContentLoaded', saveHome);
+
+    const loadPage = async (url, addToHistory = true) => {
+        try {
+            const res = await fetch(url, { credentials: 'same-origin' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const text = await res.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const pageHeader = doc.querySelector('.page-header');
+            const mainEl = doc.querySelector('main.container');
+            let html = '';
+            if (pageHeader) html += pageHeader.outerHTML;
+            if (mainEl) html += mainEl.innerHTML;
+            if (!html) throw new Error('No content');
+            container.innerHTML = html;
+            document.title = doc.title;
+            if (addToHistory) history.pushState({url}, '', url);
+            updateActive(url);
+        } catch (e) {
+            window.location.href = url;
+        }
+    };
+
+    const updateActive = (url) => {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === url));
+        // 简单高亮
+    };
+
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
+        const linkUrl = new URL(href, window.location.origin);
+        if (linkUrl.origin !== window.location.origin) return;
+        e.preventDefault();
+        loadPage(linkUrl.pathname);
+    });
+
+    window.addEventListener('popstate', () => {
+        const path = location.pathname;
+        if (path === '/' || path.endsWith('index.html')) {
+            if (homeHTML) container.innerHTML = homeHTML;
+            updateActive('index.html');
+        } else {
+            loadPage(path, false);
+        }
+    });
+})();
+</script>
+
 </body>
 </html>
