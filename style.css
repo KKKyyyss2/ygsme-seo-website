@@ -1,0 +1,297 @@
+/* 金边水汇会所网站样式 */
+:root {
+    --primary-color: #e63946;
+    --secondary-color: #457b9d;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --light-color: #fff;
+    --border-color: #ddd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header & Hero */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), #b71c1c);
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.hero .description {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    font-size: 1.1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation */
+.nav-bar {
+    background: var(--secondary-color);
+    padding: 0.8rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-bar .container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.nav-bar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Page Header (for articles) */
+.page-header {
+    background: var(--secondary-color);
+    color: white;
+    padding: 2rem 1rem 1rem;
+}
+
+.page-header h1 {
+    margin: 0.5rem 0;
+    font-size: 1.8rem;
+}
+
+.page-header .subtitle {
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+article {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+article p {
+    margin-bottom: 1rem;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    margin: 1.5rem 0 0.8rem;
+    color: #1a1a1a;
+}
+
+h2 {
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.3rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 0.6rem;
+    text-align: left;
+}
+
+th {
+    background: var(--secondary-color);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Blockquote */
+blockquote {
+    background: #f9f9f9;
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* Keywords Box */
+.keywords-box {
+    background: #e8f4fd;
+    border: 1px solid #bee1f4;
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+}
+
+.keywords-box strong {
+    color: var(--secondary-color);
+}
+
+/* Interaction Section */
+.interaction {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.interaction p {
+    margin-bottom: 0.5rem;
+}
+
+.interaction a {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.interaction a:hover {
+    text-decoration: underline;
+}
+
+/* Tags */
+.tags {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.95rem;
+    color: #666;
+    word-spacing: 5px;
+}
+
+.tags a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.tags a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-bar .container {
+        gap: 0.8rem;
+    }
+    
+    article {
+        padding: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    table {
+        font-size: 0.85rem;
+    }
+}
