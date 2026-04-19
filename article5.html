@@ -7,7 +7,7 @@
     <meta name="keywords" content="金边水汇新手, 第一次按摩, 马杀鸡入门, 水汇流程, 金边按摩指南, 柬埔寨会所新手">
     <title>金边水汇新手必读 - 第一次按摩完整指南</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="parent" href="/index.html">
+    <link rel="parent" href="/">
     <!-- LocalBusiness Schema.org -->
     <script type="application/ld+json">
     {
@@ -33,7 +33,7 @@
 <body>
     <header class="page-header">
         <div class="container">
-            <a href="/faq.html" style="margin-left: 1em; font-size: 0.9em; color: #888;">| 查看 FAQ</a>
+            <a href="/faq" style="margin-left: 1em; font-size: 0.9em; color: #888;">| 查看 FAQ</a>
             <h1>🌙 金边水汇新手必读</h1>
             <p class="subtitle">第一次去按摩 | 马杀鸡入门 | 完整流程</p>
         </div>
@@ -205,7 +205,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 金边水汇会所 - <a href="/index.html">返回首页</a></p>
+            <p>&copy; 2024 金边水汇会所 - <a href="/">返回首页</a></p>
             <p>Telegram: <a href="https://t.me/s/ygsme">t.me/s/ygsme</a></p>
         </div>
     </footer>
@@ -217,8 +217,8 @@
     const navLinks = document.querySelectorAll('.nav-bar a');
 
     function loadPage(path, push = true) {
-        let url = path;
-        if (!url.endsWith('.html')) url += '.html';
+        // path already is like /article1 (no .html)
+        const url = path + '.html'; // fetch the .html file under the hood
         fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
             .then(r => {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -256,11 +256,11 @@
         loadPage(location.pathname, false);
     });
 
-    // initial active
-    const initPath = location.pathname === '/' ? '/index.html' : location.pathname;
+    const initPath = location.pathname === '/' || location.pathname.endsWith('/index.html') ? '/' : location.pathname;
     updateActive(initPath);
 })();
 </script>
+
 
 
 </body>

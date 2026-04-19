@@ -33,7 +33,7 @@
 <body>
     <header class="page-header">
         <div class="container">
-            <a href="index.html" class="back-link">← 返回首页</a>
+            <a href="/" class="back-link">← 返回首页</a>
             <h1>❓ 常见问题 (FAQ)</h1>
             <p class="subtitle">金边水汇会所 - 按摩、马杀鸡、洗浴中心</p>
         </div>
@@ -41,16 +41,16 @@
 
     <nav class="nav-bar">
         <div class="container">
-            <a href="index.html">首页</a>
-        <a href="article1.html">高端推荐</a>
-        <a href="article2.html">避坑指南</a>
-        <a href="article3.html">技师质量</a>
-        <a href="article4.html">价格指南</a>
-        <a href="article5.html">新手指南</a>
-        <a href="article6.html">文章6</a>
-        <a href="article7.html">文章7</a>
-        <a href="article8.html">文章8</a>
-        <a href="article9.html">文章9</a>
+            <a href="/">首页</a>
+        <a href="/article1">高端推荐</a>
+        <a href="/article2">避坑指南</a>
+        <a href="/article3">技师质量</a>
+        <a href="/article4">价格指南</a>
+        <a href="/article5">新手指南</a>
+        <a href="/article6">文章6</a>
+        <a href="/article7">文章7</a>
+        <a href="/article8">文章8</a>
+        <a href="/article9">文章9</a>
         </div>
     </nav>
 
@@ -62,7 +62,7 @@
 
             <details>
                 <summary><strong>金边按摩一般多少钱？</strong></summary>
-                <p>价格范围很广：低端$20-50，中端$50-100，高端$100-200+。不同会所、服务项目、时长价格不同。具体参考我们的<a href="article4.html">价格指南</a>。</p>
+                <p>价格范围很广：低端$20-50，中端$50-100，高端$100-200+。不同会所、服务项目、时长价格不同。具体参考我们的<a href="/article4">价格指南</a>。</p>
             </details>
 
             <details>
@@ -101,7 +101,7 @@
 
             <details>
                 <summary><strong>技师质量怎么样？</strong></summary>
-                <p>根据我们调研，高端会所技师年龄18-35岁，颜值 decent。质量差异大，建议参考我们的<a href="article3.html">技师质量Top5</a>推荐。</p>
+                <p>根据我们调研，高端会所技师年龄18-35岁，颜值 decent。质量差异大，建议参考我们的<a href="/article3">技师质量Top5</a>推荐。</p>
             </details>
 
             <details>
@@ -175,7 +175,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024-2025 金边水汇会所 - <a href="index.html">返回首页</a></p>
+            <p>&copy; 2024-2025 金边水汇会所 - <a href="/">返回首页</a></p>
             <p>Telegram: <a href="https://t.me/s/ygsme">t.me/s/ygsme</a></p>
         </div>
     </footer>
@@ -187,8 +187,8 @@
     const navLinks = document.querySelectorAll('.nav-bar a');
 
     function loadPage(path, push = true) {
-        let url = path;
-        if (!url.endsWith('.html')) url += '.html';
+        // path already is like /article1 (no .html)
+        const url = path + '.html'; // fetch the .html file under the hood
         fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
             .then(r => {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -226,11 +226,11 @@
         loadPage(location.pathname, false);
     });
 
-    // initial active
-    const initPath = location.pathname === '/' ? '/index.html' : location.pathname;
+    const initPath = location.pathname === '/' || location.pathname.endsWith('/index.html') ? '/' : location.pathname;
     updateActive(initPath);
 })();
 </script>
+
 
 
 </body>
