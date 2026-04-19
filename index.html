@@ -121,12 +121,10 @@
 (function() {
     const container = document.getElementById('spa-container');
     const navLinks = document.querySelectorAll('.nav-bar a');
-    const currentPath = location.pathname;
-    const isHome = currentPath === '/' || currentPath.endsWith('/index.html');
-    const homeMainHTML = isHome ? container.innerHTML : null;
 
     function loadPage(path, push = true) {
-        const url = path.endsWith('.html') ? path : path + '.html';
+        let url = path;
+        if (!url.endsWith('.html')) url += '.html';
         fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
             .then(r => {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -161,15 +159,15 @@
     });
 
     window.addEventListener('popstate', () => {
-        const path = location.pathname;
-        loadPage(path, false);
+        loadPage(location.pathname, false);
     });
 
     // initial active
-    const initPath = currentPath === '/' ? '/index.html' : currentPath;
+    const initPath = location.pathname === '/' ? '/index.html' : location.pathname;
     updateActive(initPath);
 })();
 </script>
+
 
 </body>
 </html>
