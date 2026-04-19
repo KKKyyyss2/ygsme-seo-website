@@ -39,7 +39,7 @@
         </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="spa-container">
         <article>
             <p>想在金边享受水汇按摩又不想被宰？这篇价格指南必看，包含按摩、马杀鸡、洗浴中心详细消费。</p>
 
@@ -225,5 +225,63 @@
             <p>Telegram: <a href="https://t.me/s/ygsme">t.me/s/ygsme</a></p>
         </div>
     </footer>
+<script>
+(function() {
+    const container = document.getElementById('spa-container');
+    const navLinks = document.querySelectorAll('.nav-bar a');
+    const homeMainHTML = container.innerHTML;
+
+    function loadPage(path, push = true) {
+        fetch(path + (path.endsWith('.html') ? '' : '.html'), {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+            .then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newContent = doc.getElementById('spa-container').innerHTML;
+                container.innerHTML = newContent;
+                if (push) history.pushState(null, '', path);
+                window.scrollTo(0, 0);
+                updateActive(path);
+            })
+            .catch(err => console.error('Page load error:', err));
+    }
+
+    function updateActive(url) {
+        if (!url.startsWith('/')) url = '/' + url;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === url));
+    }
+
+    // intercept nav clicks
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
+        const linkUrl = new URL(href, window.location.origin);
+        if (linkUrl.origin !== window.location.origin) return;
+        e.preventDefault();
+        loadPage(linkUrl.pathname);
+    });
+
+    // on popstate (back/forward)
+    window.addEventListener('popstate', () => {
+        const path = location.pathname;
+        if (path === '/' || path.endsWith('index.html')) {
+            container.innerHTML = homeMainHTML;
+            updateActive('/index.html');
+        } else {
+            loadPage(path, false);
+        }
+    });
+
+    // initial active state
+    const initPath = location.pathname === '/' ? '/index.html' : location.pathname;
+    updateActive(initPath);
+})();
+</script>
+
 </body>
 </html>
