@@ -267,6 +267,17 @@ blockquote {
 
 
 
+
+/* Align content with section titles */
+.keywords, .contact, .why-us p, .why-us ul {
+    padding-left: 1rem;
+}
+.why-us ul {
+    list-style: disc inside;
+    margin: 0;
+    padding-left: 1rem; /* same as h2 padding */
+}
+
 .why-us {
     margin: 2rem 0;
     padding: 1.5rem;
