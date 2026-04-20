@@ -230,8 +230,12 @@
     const navLinks = document.querySelectorAll('.nav-bar a');
 
     function loadPage(path, push = true) {
-        // path already is like /gao-duan (no .html)
-        const url = path + '.html'; // fetch the .html file under the hood
+        let url;
+        if (path === '/' || path === '/index.html') {
+            url = 'index.html';
+        } else {
+            url = path + '.html';
+        }
         fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
             .then(r => {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -243,15 +247,18 @@
                 const newContent = doc.getElementById('spa-container').innerHTML;
                 container.innerHTML = newContent;
                 if (push) history.pushState(null, '', path);
-                window.scrollTo(0, 0);
+                window.scrollTo(0,0);
                 updateActive(path);
             })
             .catch(err => console.error('Page load error:', err));
     }
 
     function updateActive(url) {
-        if (!url.startsWith('/')) url = '/' + url;
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === url));
+        // Normalize: map /index.html -> /
+        let p = url;
+        if (p === '/index.html') p = '/';
+        if (!p.startsWith('/')) p = '/' + p;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === p));
     }
 
     document.addEventListener('click', (e) => {
@@ -262,17 +269,19 @@
         const linkUrl = new URL(href, window.location.origin);
         if (linkUrl.origin !== window.location.origin) return;
         e.preventDefault();
-        loadPage(linkUrl.pathname);
+        const path = linkUrl.pathname;
+        loadPage(path);
     });
 
     window.addEventListener('popstate', () => {
         loadPage(location.pathname, false);
     });
 
-    const initPath = location.pathname === '/' || location.pathname.endsWith('/index.html') ? '/' : location.pathname;
+    const initPath = location.pathname === '/' ? '/' : location.pathname;
     updateActive(initPath);
 })();
 </script>
+
 
 
 
