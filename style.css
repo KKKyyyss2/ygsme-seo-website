@@ -208,7 +208,7 @@ h2 {
     font-size: 1.6rem;
     margin: 1.8rem 0 1rem;
     border-left: 4px solid var(--gold);
-    padding-left: 1rem;
+    
     color: var(--text-main);
 }
 h3 {
@@ -269,13 +269,10 @@ blockquote {
 
 
 /* Align content with section titles */
-.keywords, .contact, .why-us p, .why-us ul {
-    padding-left: 1rem;
-}
+
 .why-us ul {
     list-style: disc inside;
     margin: 0;
-    padding-left: 1rem; /* same as h2 padding */
 }
 
 .why-us {
