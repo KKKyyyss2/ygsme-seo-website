@@ -135,6 +135,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 1rem;
+    width: 100%;
 }
 
 .page-header {
@@ -190,6 +191,8 @@ article {
     display: flex; /* 与.post-card一致 */
     flex-direction: column; /* 与.post-card一致 */
     justify-content: space-between; /* 与.post-card一致 */
+    max-width: 100%; /* 确保不超过容器 */
+    box-sizing: border-box; /* 已设置 */
 }
 
 .posts-grid {
