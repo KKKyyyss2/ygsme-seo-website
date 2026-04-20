@@ -37,7 +37,7 @@ body {
 
 .hero {
     background: radial-gradient(circle at top right, #1a1a2e 0%, var(--bg-dark) 60%);
-    padding: 1.2rem 1rem 1.8rem; /* 上边距从1.8rem减少到1.2rem */
+    padding: 0.7rem 1rem 1.8rem; /* 上边距从1.2rem减少到0.7rem */
     text-align: center;
     border-bottom: 1px solid var(--border);
 }
@@ -387,7 +387,7 @@ details p {
     article, .post-card { padding: 1.2rem; }
     h2 { font-size: 1.4rem; }
     table { font-size: 0.85rem; }
-    .hero {
+    .page-header {
         width: 100vw;
         position: relative;
         left: 50%;
