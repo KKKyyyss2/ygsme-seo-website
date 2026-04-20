@@ -387,4 +387,15 @@ details p {
     article, .post-card { padding: 1.2rem; }
     h2 { font-size: 1.4rem; }
     table { font-size: 0.85rem; }
+    .page-header {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-radius: 0;
+    }
 }
