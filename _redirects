@@ -1,7 +1,1 @@
-# Redirects for old article paths to new slug paths (SEO 301)
-/article1.html /gao-duan 301
-/article2.html /bi-keng 301
-/article3.html /ji-shi 301
-/article4.html /jia-ge 301
-/article5.html /xin-shou 301
-
+/article-* /articles/article-* 200
