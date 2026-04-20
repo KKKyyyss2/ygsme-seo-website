@@ -151,6 +151,20 @@ body {
 
 main { padding: 2rem 0; }
 
+.keywords > p,
+.contact > p,
+.why-us > p,
+.why-us > ul,
+.why-us > h3 {
+    padding-left: 1rem;
+}
+.why-us ul {
+    margin: 0;
+    padding-left: 1rem;
+    list-style: disc inside;
+}
+
+
 article, .posts-grid {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -205,6 +219,7 @@ article, .posts-grid {
 
 h1 { font-size: 2rem; margin: 1.5rem 0 1rem; color: var(--gold); }
 h2 {
+    padding-left: 1rem;
     font-size: 1.6rem;
     margin: 1.8rem 0 1rem;
     border-left: 4px solid var(--gold);
@@ -277,7 +292,6 @@ blockquote {
 
 .why-us {
     margin: 2rem 0;
-    padding: 1.5rem;
 }
 
 
