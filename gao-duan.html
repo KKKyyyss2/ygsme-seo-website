@@ -178,7 +178,6 @@
                 const newContent = doc.getElementById('spa-container').innerHTML;
                 container.innerHTML = newContent;
                 if (push) history.pushState(null, '', path);
-                window.scrollTo(0, 0);
                 setActive(path);
             })
             .catch(err => console.error('Page load error:', err));
