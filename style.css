@@ -165,7 +165,7 @@ body {
 
 .back-link:hover { text-decoration: underline; }
 
-main { padding: 2rem 0; }
+main { padding: 2.5rem 0 2rem; }
 
 .keywords > p,
 .contact > p,
