@@ -108,6 +108,11 @@ body {
     background: rgba(212, 175, 55, 0.15);
 }
 
+.nav-bar a.active {
+    background: var(--gold);
+    color: #0a0a0a;
+}
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
