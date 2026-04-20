@@ -120,7 +120,7 @@ body {
 }
 
 .page-header {
-    background: var(--bg-card);
+    background: radial-gradient(ellipse at top left, rgba(212, 175, 55, 0.08), transparent 70%), var(--bg-card);
     border-bottom: 1px solid var(--gold);
     padding: 1.5rem 1rem;
     margin-bottom: 1.5rem;
