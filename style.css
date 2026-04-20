@@ -126,10 +126,12 @@ body {
 
 .hero-note {
     color: var(--gold);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-align: center;
-    margin: 0.8rem 0 1.2rem;
-    letter-spacing: 1px;
+    margin: 1.5rem 0 2rem;
+    letter-spacing: 1.5px;
+    opacity: 0.85;
+    font-weight: 500;
 }
 .hero-note a {
     color: var(--gold);
