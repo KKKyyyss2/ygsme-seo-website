@@ -73,6 +73,17 @@ body {
     box-shadow: 0 6px 20px rgba(25, 118, 210, 0.6);
 }
 
+.hero-note {
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+    letter-spacing: 1px;
+}
+.hero-note a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
 .nav-bar {
     position: static; /* was sticky */
     background: var(--bg-nav);
