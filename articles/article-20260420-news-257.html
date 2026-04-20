@@ -1,156 +1,157 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="金边快讯：...">
-    <meta name="keywords" content="金边快讯, 新闻, 金边娱乐, Cambodia news, Phnom Penh">
-    <title>【金边快讯】Policy space matters: ADB believe Cambodia better  - 金边会所导航 | 高端按摩、水汇、SPA推荐 - 柬埔寨会所指南</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="canonical" href="https://xko1.com/article-20260420-news-257">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+     1|<!DOCTYPE html>
+     2|<html lang="zh-CN">
+     3|<head>
+     4|    <meta charset="UTF-8">
+     5|    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6|    <meta name="description" content="金边快讯：...">
+     7|    <meta name="keywords" content="金边快讯, 新闻, 金边娱乐, Cambodia news, Phnom Penh">
+     8|    <title>【金边快讯】Policy space matters: ADB believe Cambodia better  - 金边会所导航 | 高端按摩、水汇、SPA推荐 - 柬埔寨会所指南</title>
+     9|    <link rel="stylesheet" href="/style.css">
+    10|    <link rel="canonical" href="https://xko1.com/article-20260420-news-257">
+    11|    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    12|    <script src="/spa.js" defer></script>
 </head>
-<body>
-    <header class="hero">
-  <div class="container">
-<div class="container">
-            <h1>金边会所导航 | 高端按摩、水汇、SPA推荐 - 柬埔寨会所指南</h1>
-            <p class="subtitle">🇨🇳 按摩 | 水汇 | SPA  | 会所推荐 - 金边、西港、波贝、财通、木牌、戈公 🇰🇭</p>
-            <p class="description">专注柬埔寨金边水汇服务，每日推荐优质按摩会所、马杀鸡场所，提供技师质量、价格透明、避坑指南，让你少走弯路。</p>
-            <a href="https://t.me/s/ygsme" class="cta-button" target="_blank">👉 关注Telegram频道</a>
-        </div>
-  </div>
-</header>
-
-    <nav class="nav-bar">
-        <div class="container">
-            <a href="/">首页</a>
-            <a href="/gao-duan">高端推荐</a>
-            <a href="/bi-keng">避坑指南</a>
-            <a href="/ji-shi">技师质量</a>
-            <a href="/jia-ge">价格指南</a>
-            <a href="/xin-shou">新手指南</a>
-            <a href="/faq">FAQ</a>
-        </div>
-    </nav>
-
-    <main id="spa-container" class="container">
-        
-        <article class="post-card">
-# 【金边快讯】Policy space matters: ADB believe Cambodia better positioned than in past economic crises
-
-**来源**: [Phnom Penh Post](https://phnompenhpost.com/business/policy-space-matters-adb-believe-cambodia-better-positioned-than-in-past-economic-crises/)
-
-**摘要**: 
-
----
-
-## 📍 事件背景
-
-据报道，该事件涉及金边本地娱乐服务业动态。
-
----
-
-## 💡 对水汇会所的影响
-
-- 可能影响行业监管政策
-- 消费者权益保护加强
-- 会所运营需更规范
-
----
-
-## 🔍 搜索关键词
-
-金边水汇, 柬埔寨按摩, Phnom Penh spa, 金边会所, 娱乐资讯
-
----
-
-## 📮 互动与投稿
-
-你对这件事怎么看？留言分享观点！
-
-投稿/联系: @JW469
-
----
-
-*本文基于新闻报道改编，原文链接: [点击查看](https://phnompenhpost.com/business/policy-space-matters-adb-believe-cambodia-better-positioned-than-in-past-economic-crises/)*
-
-
-            <div class="interaction">
-                <p><strong>🌏 24小时客:<a href="https://t.me/JW469"> @JW469</a></strong></p>
-            </div>
-
-            <div class="tags">
-                #金边快讯 #新闻 #金边娱乐 #Cambodia news #Phnom Penh
-            </div>
-        </article>
-    
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 金边水汇会所 - 专注柬埔寨金边水汇服务推荐</p>
-            <p>联系频道: <a href="https://t.me/s/ygsme">https://t.me/s/ygsme</a></p>
-        </div>
-    </footer>
-    
-
-
-<script>
-(function() {
-    const container = document.getElementById('spa-container');
-
-    function loadPage(path, push = true) {
-        let url;
-        if (path === '/' || path === '/index.html' || path === '') {
-            url = '/index.html';
-        } else if (path.startsWith('/article-')) {
-            url = '/articles' + path + '.html';
-        } else {
-            url = path + '.html';
-        }
-        fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
-            .then(r => {
-                if (!r.ok) throw new Error('HTTP ' + r.status);
-                return r.text();
-            })
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const newContent = doc.getElementById('spa-container').innerHTML;
-                container.innerHTML = newContent;
-                if (push) history.pushState(null, '', path);
-                setActive(path);
-            })
-            .catch(err => console.error('Page load error:', err));
-    }
-
-    function setActive(path) {
-        let p = path;
-        if (p === '/index.html' || p === '') p = '/';
-        if (!p.startsWith('/')) p = '/' + p;
-        document.querySelectorAll('.nav-bar a').forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === p);
-        });
-    }
-
-    document.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (!a) return;
-        const href = a.getAttribute('href');
-        if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
-        const linkUrl = new URL(href, window.location.origin);
-        if (linkUrl.origin !== window.location.origin) return;
-        e.preventDefault();
-        loadPage(linkUrl.pathname);
-    });
-
-    window.addEventListener('popstate', () => {
-        loadPage(location.pathname, false);
-    });
-
-    setActive(location.pathname);
-})();
-</script>
-</body>
-</html>
+    13|<body>
+    14|    <header class="hero">
+    15|  <div class="container">
+    16|<div class="container">
+    17|            <h1>金边会所导航 | 高端按摩、水汇、SPA推荐 - 柬埔寨会所指南</h1>
+    18|            <p class="subtitle">🇨🇳 按摩 | 水汇 | SPA  | 会所推荐 - 金边、西港、波贝、财通、木牌、戈公 🇰🇭</p>
+    19|            <p class="description">专注柬埔寨金边水汇服务，每日推荐优质按摩会所、马杀鸡场所，提供技师质量、价格透明、避坑指南，让你少走弯路。</p>
+    20|            <a href="https://t.me/s/ygsme" class="cta-button" target="_blank">👉 关注Telegram频道</a>
+    21|        </div>
+    22|  </div>
+    23|</header>
+    24|
+    25|    <nav class="nav-bar">
+    26|        <div class="container">
+    27|            <a href="/">首页</a>
+    28|            <a href="/gao-duan">高端推荐</a>
+    29|            <a href="/bi-keng">避坑指南</a>
+    30|            <a href="/ji-shi">技师质量</a>
+    31|            <a href="/jia-ge">价格指南</a>
+    32|            <a href="/xin-shou">新手指南</a>
+    33|            <a href="/faq">FAQ</a>
+    34|        </div>
+    35|    </nav>
+    36|
+    37|    <main id="spa-container" class="container">
+    38|        
+    39|        <article class="post-card">
+    40|# 【金边快讯】Policy space matters: ADB believe Cambodia better positioned than in past economic crises
+    41|
+    42|**来源**: [Phnom Penh Post](https://phnompenhpost.com/business/policy-space-matters-adb-believe-cambodia-better-positioned-than-in-past-economic-crises/)
+    43|
+    44|**摘要**: 
+    45|
+    46|---
+    47|
+    48|## 📍 事件背景
+    49|
+    50|据报道，该事件涉及金边本地娱乐服务业动态。
+    51|
+    52|---
+    53|
+    54|## 💡 对水汇会所的影响
+    55|
+    56|- 可能影响行业监管政策
+    57|- 消费者权益保护加强
+    58|- 会所运营需更规范
+    59|
+    60|---
+    61|
+    62|## 🔍 搜索关键词
+    63|
+    64|金边水汇, 柬埔寨按摩, Phnom Penh spa, 金边会所, 娱乐资讯
+    65|
+    66|---
+    67|
+    68|## 📮 互动与投稿
+    69|
+    70|你对这件事怎么看？留言分享观点！
+    71|
+    72|投稿/联系: @JW469
+    73|
+    74|---
+    75|
+    76|*本文基于新闻报道改编，原文链接: [点击查看](https://phnompenhpost.com/business/policy-space-matters-adb-believe-cambodia-better-positioned-than-in-past-economic-crises/)*
+    77|
+    78|
+    79|            <div class="interaction">
+    80|                <p><strong>🌏 24小时客:<a href="https://t.me/JW469"> @JW469</a></strong></p>
+    81|            </div>
+    82|
+    83|            <div class="tags">
+    84|                #金边快讯 #新闻 #金边娱乐 #Cambodia news #Phnom Penh
+    85|            </div>
+    86|        </article>
+    87|    
+    88|    </main>
+    89|
+    90|    <footer>
+    91|        <div class="container">
+    92|            <p>&copy; 2026 金边水汇会所 - 专注柬埔寨金边水汇服务推荐</p>
+    93|            <p>联系频道: <a href="https://t.me/s/ygsme">https://t.me/s/ygsme</a></p>
+    94|        </div>
+    95|    </footer>
+    96|    
+    97|
+    98|
+    99|<script>
+   100|(function() {
+   101|    const container = document.getElementById('spa-container');
+   102|
+   103|    function loadPage(path, push = true) {
+   104|        let url;
+   105|        if (path === '/' || path === '/index.html' || path === '') {
+   106|            url = '/index.html';
+   107|        } else if (path.startsWith('/article-')) {
+   108|            url = '/articles' + path + '.html';
+   109|        } else {
+   110|            url = path + '.html';
+   111|        }
+   112|        fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+   113|            .then(r => {
+   114|                if (!r.ok) throw new Error('HTTP ' + r.status);
+   115|                return r.text();
+   116|            })
+   117|            .then(html => {
+   118|                const parser = new DOMParser();
+   119|                const doc = parser.parseFromString(html, 'text/html');
+   120|                const newContent = doc.getElementById('spa-container').innerHTML;
+   121|                container.innerHTML = newContent;
+   122|                if (push) history.pushState(null, '', path);
+   123|                setActive(path);
+   124|            })
+   125|            .catch(err => console.error('Page load error:', err));
+   126|    }
+   127|
+   128|    function setActive(path) {
+   129|        let p = path;
+   130|        if (p === '/index.html' || p === '') p = '/';
+   131|        if (!p.startsWith('/')) p = '/' + p;
+   132|        document.querySelectorAll('.nav-bar a').forEach(a => {
+   133|            a.classList.toggle('active', a.getAttribute('href') === p);
+   134|        });
+   135|    }
+   136|
+   137|    document.addEventListener('click', (e) => {
+   138|        const a = e.target.closest('a');
+   139|        if (!a) return;
+   140|        const href = a.getAttribute('href');
+   141|        if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
+   142|        const linkUrl = new URL(href, window.location.origin);
+   143|        if (linkUrl.origin !== window.location.origin) return;
+   144|        e.preventDefault();
+   145|        loadPage(linkUrl.pathname);
+   146|    });
+   147|
+   148|    window.addEventListener('popstate', () => {
+   149|        loadPage(location.pathname, false);
+   150|    });
+   151|
+   152|    setActive(location.pathname);
+   153|})();
+   154|</script>
+   155|</body>
+   156|</html>
