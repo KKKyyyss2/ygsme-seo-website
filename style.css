@@ -124,6 +124,18 @@ body {
     color: #0a0a0a;
 }
 
+.hero-note {
+    color: var(--gold);
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0.8rem 0 1.2rem;
+    letter-spacing: 1px;
+}
+.hero-note a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
