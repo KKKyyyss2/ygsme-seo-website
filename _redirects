@@ -1,1 +1,2 @@
-/article-* /articles/article-* 200
+# Cloudflare Pages Redirects
+/article-* /articles/article-*.html 200

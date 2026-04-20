@@ -6,7 +6,7 @@
         if (path === '/' || path === '/index.html' || path === '') {
             url = '/index.html';
         } else if (path.startsWith('/article-')) {
-            url = '/articles' + path;
+            url = '/articles' + path + '.html';
         } else {
             url = path + '.html';
         }
