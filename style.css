@@ -200,6 +200,10 @@ article, .posts-grid {
     border-radius: 8px;
     padding: 1.3rem;
     transition: all 0.3s;
+    min-height: 180px; /* 确保最小高度，避免加载时跳动 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .post-card:hover {
