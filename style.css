@@ -98,6 +98,7 @@ body {
     z-index: 1000;
     border-bottom: 1px solid var(--border);
     padding: 0.5rem 0;
+    margin-bottom: 1.5rem; /* 新增：增加导航栏与内容之间的间距 */
 }
 
 .nav-bar .container {
@@ -186,6 +187,7 @@ article {
     border-radius: 10px;
     padding: 1.3rem; /* 与.post-card一致 */
     box-shadow: var(--shadow);
+    margin-top: 1rem; /* 新增：文章上边距 */
     margin-bottom: 1.5rem;
     min-height: 180px; /* 与.post-card一致 */
     display: flex; /* 与.post-card一致 */
