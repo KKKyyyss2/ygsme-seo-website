@@ -179,13 +179,17 @@ main { padding: 2rem 0; }
 }
 
 
-article, .posts-grid {
+article {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1.6rem;
+    padding: 1.3rem; /* 与.post-card一致 */
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
+    min-height: 180px; /* 与.post-card一致 */
+    display: flex; /* 与.post-card一致 */
+    flex-direction: column; /* 与.post-card一致 */
+    justify-content: space-between; /* 与.post-card一致 */
 }
 
 .posts-grid {
