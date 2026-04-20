@@ -241,7 +241,6 @@
 <script>
 (function() {
     const container = document.getElementById('spa-container');
-    const navLinks = document.querySelectorAll('.nav-bar a');
 
     function loadPage(path, push = true) {
         let url;
@@ -261,18 +260,19 @@
                 const newContent = doc.getElementById('spa-container').innerHTML;
                 container.innerHTML = newContent;
                 if (push) history.pushState(null, '', path);
-                window.scrollTo(0,0);
-                updateActive(path);
+                window.scrollTo(0, 0);
+                setActive(path);
             })
             .catch(err => console.error('Page load error:', err));
     }
 
-    function updateActive(url) {
-        // Normalize: map /index.html -> /
-        let p = url;
+    function setActive(path) {
+        let p = path;
         if (p === '/index.html') p = '/';
         if (!p.startsWith('/')) p = '/' + p;
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === p));
+        document.querySelectorAll('.nav-bar a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === p);
+        });
     }
 
     document.addEventListener('click', (e) => {
@@ -283,18 +283,18 @@
         const linkUrl = new URL(href, window.location.origin);
         if (linkUrl.origin !== window.location.origin) return;
         e.preventDefault();
-        const path = linkUrl.pathname;
-        loadPage(path);
+        loadPage(linkUrl.pathname);
     });
 
     window.addEventListener('popstate', () => {
         loadPage(location.pathname, false);
     });
 
-    const initPath = location.pathname === '/' ? '/' : location.pathname;
-    updateActive(initPath);
+    setActive(location.pathname);
 })();
 </script>
+
+
 
 
 
