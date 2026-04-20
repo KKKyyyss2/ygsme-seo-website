@@ -1,2 +1,3 @@
 # Cloudflare Pages Redirects
-/article-* /articles/article-*.html 200
+# 文章现在在根目录，Cloudflare会自动处理：
+# /article-xxx → article-xxx.html (Clean URLs)

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="金边快讯：...">
+    <meta name="keywords" content="金边快讯, 新闻, 金边娱乐, Cambodia news, Phnom Penh">
+    <title>【金边快讯】Policy space matters: ADB believe Cambodia better  - 金边会所导航 | 高端按摩、水汇、SPA推荐 - 柬埔寨会所指南</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="https://xko1.com/article-20260420-news-268">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <script src="/spa.js" defer></script>
+</head>
+<body>
+    <header class="hero">
+  <div class="container">
+<div class="container">
+            <h1>金边会所导航 | 高端按摩、水汇、SPA推荐 - 柬埔寨会所指南</h1>
+            <p class="subtitle">🇨🇳 按摩 | 水汇 | SPA  | 会所推荐 - 金边、西港、波贝、财通、木牌、戈公 🇰🇭</p>
+            <p class="description">专注柬埔寨金边水汇服务，每日推荐优质按摩会所、马杀鸡场所，提供技师质量、价格透明、避坑指南，让你少走弯路。</p>
+            <a href="https://t.me/s/ygsme" class="cta-button" target="_blank">👉 关注Telegram频道</a>
+        </div>
+  </div>
+</header>
+
+    <nav class="nav-bar">
+        <div class="container">
+            <a href="/">首页</a>
+            <a href="/gao-duan">高端推荐</a>
+            <a href="/bi-keng">避坑指南</a>
+            <a href="/ji-shi">技师质量</a>
+            <a href="/jia-ge">价格指南</a>
+            <a href="/xin-shou">新手指南</a>
+            <a href="/faq">FAQ</a>
+        </div>
+    </nav>
+
+    <main id="spa-container" class="container">
+        
+        <article class="post-card">
+# 【金边快讯】Policy space matters: ADB believe Cambodia better positioned than in past economic crises
+
+**来源**: [Phnom Penh Post](https://phnompenhpost.com/business/policy-space-matters-adb-believe-cambodia-better-positioned-than-in-past-economic-crises/)
+
+**摘要**: 
+
+---
+
+## 📍 事件背景
+
+据报道，该事件涉及金边本地娱乐服务业动态。
+
+---
+
+## 💡 对水汇会所的影响
+
+- 可能影响行业监管政策
+- 消费者权益保护加强
+- 会所运营需更规范
+
+---
+
+## 🔍 搜索关键词
+
+金边水汇, 柬埔寨按摩, Phnom Penh spa, 金边会所, 娱乐资讯
+
+---
+
+## 📮 互动与投稿
+
+你对这件事怎么看？留言分享观点！
+
+投稿/联系: @JW469
+
+---
+
+*本文基于新闻报道改编，原文链接: [点击查看](https://phnompenhpost.com/business/policy-space-matters-adb-believe-cambodia-better-positioned-than-in-past-economic-crises/)*
+
+
+            <div class="interaction">
+                <p><strong>🌏 24小时客:<a href="https://t.me/JW469"> @JW469</a></strong></p>
+            </div>
+
+            <div class="tags">
+                #金边快讯 #新闻 #金边娱乐 #Cambodia news #Phnom Penh
+            </div>
+        </article>
+    
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 金边水汇会所 - 专注柬埔寨金边水汇服务推荐</p>
+            <p>联系频道: <a href="https://t.me/s/ygsme">https://t.me/s/ygsme</a></p>
+        </div>
+    </footer>
+    
+
+
+<script>
+(function() {
+    const container = document.getElementById('spa-container');
+
+    function loadPage(path, push = true) {
+        let url;
+        if (path === '/' || path === '/index.html' || path === '') {
+            url = '/index.html';
+        } else if (path.startsWith('/article-')) {
+            url = '/articles' + path + '.html';
+        } else {
+            url = path + '.html';
+        }
+        fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+            .then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newContent = doc.getElementById('spa-container').innerHTML;
+                container.innerHTML = newContent;
+                if (push) history.pushState(null, '', path);
+                setActive(path);
+            })
+            .catch(err => console.error('Page load error:', err));
+    }
+
+    function setActive(path) {
+        let p = path;
+        if (p === '/index.html' || p === '') p = '/';
+        if (!p.startsWith('/')) p = '/' + p;
+        document.querySelectorAll('.nav-bar a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === p);
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
+        const linkUrl = new URL(href, window.location.origin);
+        if (linkUrl.origin !== window.location.origin) return;
+        e.preventDefault();
+        loadPage(linkUrl.pathname);
+    });
+
+    window.addEventListener('popstate', () => {
+        loadPage(location.pathname, false);
+    });
+
+    setActive(location.pathname);
+})();
+</script>
+</body>
+</html>
