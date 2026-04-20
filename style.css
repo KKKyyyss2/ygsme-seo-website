@@ -382,7 +382,7 @@ details p {
 
 @media (max-width: 768px) {
     .hero h1 { font-size: 1.8rem; }
-    .hero { padding: 0.4rem 1rem 1.2rem; } /* 手机端进一步减少上边距 */
+    .hero { padding: 0.1rem 1rem 1.2rem; } /* 手机端上边距调整到0.1rem */
     .nav-bar .container { gap: 0.6rem; }
     .nav-bar a { padding: 0.25rem 0.5rem; font-size: 0.9rem; }
     article, .post-card { padding: 1.2rem; }
