@@ -6,14 +6,15 @@
     <meta name="description" content="金边快讯：...">
     <meta name="keywords" content="金边快讯, 新闻, 金边娱乐, Cambodia news, Phnom Penh">
     <title>【金边快讯】Policy space matters: ADB believe Cambodia better  - 金边水汇会所</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="sitemap" type="application/xml" href="sitemap.xml">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="https://xko1.com">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 </head>
 <body>
     <header class="hero">
         <div class="container">
-            <h1>🇰🇭 金边水汇会所</h1>
-            <p class="subtitle">金边按摩 | 马杀鸡 | 洗浴中心 | 高端会所</p>
+            <h1>🇰🇭 金边会所导航</h1>
+            <p class="subtitle">🇨🇳 按摩 | 水汇 | SPA | 会所推荐 - 金边、西港、波贝、财通、木牌、戈公 🇰🇭</p>
             <p class="description">专注柬埔寨金边水汇服务，每日推荐优质按摩会所、马杀鸡场所，提供技师质量、价格透明、避坑指南。</p>
             <a href="https://t.me/s/ygsme" class="cta-button" target="_blank">👉 关注Telegram频道</a>
         </div>
@@ -22,16 +23,17 @@
     <nav class="nav-bar">
         <div class="container">
             <a href="/">首页</a>
-        <a href="/gao-duan">高端推荐</a>
-        <a href="/bi-keng">避坑指南</a>
-        <a href="/ji-shi">技师质量</a>
-        <a href="/jia-ge">价格指南</a>
-        <a href="/xin-shou">新手指南</a>
-        <a href="/faq">FAQ</a>
+            <a href="/gao-duan">高端推荐</a>
+            <a href="/bi-keng">避坑指南</a>
+            <a href="/ji-shi">技师质量</a>
+            <a href="/jia-ge">价格指南</a>
+            <a href="/xin-shou">新手指南</a>
+            <a href="/faq">FAQ</a>
         </div>
     </nav>
 
     <main id="spa-container" class="container">
+        
         <article>
 # 【金边快讯】Policy space matters: ADB believe Cambodia better positioned than in past economic crises
 
@@ -80,13 +82,71 @@
                 #金边快讯 #新闻 #金边娱乐 #Cambodia news #Phnom Penh
             </div>
         </article>
+    
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 金边水汇会所 - <a href="/">返回首页</a></p>
+            <p>&copy; 2026 金边会所导航 - <a href="/">返回首页</a></p>
             <p>Telegram: <a href="https://t.me/s/ygsme">t.me/s/ygsme</a></p>
         </div>
     </footer>
+    
+<script>
+(function() {
+    const container = document.getElementById('spa-container');
+
+    function loadPage(path, push = true) {
+        let url;
+        if (path === '/' || path === '/index.html' || path === '') {
+            url = '/index.html';
+        } else if (path.startsWith('/article-')) {
+            url = '/articles' + path + '.html';
+        } else {
+            url = path + '.html';
+        }
+        fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+            .then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newContent = doc.getElementById('spa-container').innerHTML;
+                container.innerHTML = newContent;
+                if (push) history.pushState(null, '', path);
+                setActive(path);
+            })
+            .catch(err => console.error('Page load error:', err));
+    }
+
+    function setActive(path) {
+        let p = path;
+        if (p === '/index.html' || p === '') p = '/';
+        if (!p.startsWith('/')) p = '/' + p;
+        document.querySelectorAll('.nav-bar a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === p);
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
+        const linkUrl = new URL(href, window.location.origin);
+        if (linkUrl.origin !== window.location.origin) return;
+        e.preventDefault();
+        loadPage(linkUrl.pathname);
+    });
+
+    window.addEventListener('popstate', () => {
+        loadPage(location.pathname, false);
+    });
+
+    setActive(location.pathname);
+})();
+</script>
 </body>
 </html>

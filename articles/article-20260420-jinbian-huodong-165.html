@@ -9,57 +9,6 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="canonical" href="https://xko1.com/article-20260420-jinbian-huodong-165">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    <script>
-        // SPA导航脚本
-        document.addEventListener('DOMContentLoaded', function() {
-            // 导航点击拦截
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (this.href.startsWith(window.location.origin)) {
-                        e.preventDefault();
-                        const path = this.getAttribute('href');
-                        window.history.pushState({}, '', path);
-                        loadPage(path);
-                    }
-                });
-            });
-            
-            // 页面加载函数
-            async function loadPage(path) {
-                let url;
-                if (path === '/' || path === '/index.html') {
-                    url = '/index.html';
-                } else if (path.startsWith('/article-')) {
-                    url = '/articles' + path + '.html';
-                } else {
-                    url = path + '.html';
-                }
-                
-                try {
-                    const response = await fetch(url);
-                    if (!response.ok) throw new Error('页面未找到');
-                    const html = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const newContent = doc.querySelector('#spa-container');
-                    if (newContent) {
-                        document.getElementById('spa-container').innerHTML = newContent.innerHTML;
-                        // 更新页面标题
-                        const newTitle = doc.querySelector('title');
-                        if (newTitle) document.title = newTitle.textContent;
-                    }
-                } catch (error) {
-                    console.error('加载失败:', error);
-                    document.getElementById('spa-container').innerHTML = '<h1>页面加载失败</h1><p>请检查网络或刷新页面。</p>';
-                }
-            }
-            
-            // 处理浏览器前进后退
-            window.addEventListener('popstate', function() {
-                loadPage(window.location.pathname);
-            });
-        });
-    </script>
 </head>
 <body>
     <header class="hero">
@@ -74,16 +23,17 @@
     <nav class="nav-bar">
         <div class="container">
             <a href="/">首页</a>
-        <a href="/gao-duan">高端推荐</a>
-        <a href="/bi-keng">避坑指南</a>
-        <a href="/ji-shi">技师质量</a>
-        <a href="/jia-ge">价格指南</a>
-        <a href="/xin-shou">新手指南</a>
-        <a href="/faq">FAQ</a>
+            <a href="/gao-duan">高端推荐</a>
+            <a href="/bi-keng">避坑指南</a>
+            <a href="/ji-shi">技师质量</a>
+            <a href="/jia-ge">价格指南</a>
+            <a href="/xin-shou">新手指南</a>
+            <a href="/faq">FAQ</a>
         </div>
     </nav>
 
     <main id="spa-container" class="container">
+        
         <article>
             
 <h1>金边会所最新活动 - 2026年春季特惠与特色服务</h1>
@@ -137,6 +87,7 @@
                 #金边会所活动 #柬埔寨按摩优惠 #水汇特价 #金边SPA折扣 #春季特惠
             </div>
         </article>
+    
     </main>
 
     <footer>
@@ -145,5 +96,64 @@
             <p>Telegram: <a href="https://t.me/s/ygsme">t.me/s/ygsme</a></p>
         </div>
     </footer>
-</body>
-</html>
+    
+    <!-- 加载首页的SPA脚本（如果从首页SPA进入，这个脚本不会重复执行） -->
+    
+
+<script>
+(function() {
+    const container = document.getElementById('spa-container');
+
+    function loadPage(path, push = true) {
+        let url;
+        if (path === '/' || path === '/index.html' || path === '') {
+            url = '/index.html';
+        } else if (path.startsWith('/article-')) {
+            url = '/articles' + path + '.html';
+        } else {
+            url = path + '.html';
+        }
+        fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+            .then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newContent = doc.getElementById('spa-container').innerHTML;
+                container.innerHTML = newContent;
+                if (push) history.pushState(null, '', path);
+                setActive(path);
+            })
+            .catch(err => console.error('Page load error:', err));
+    }
+
+    function setActive(path) {
+        let p = path;
+        if (p === '/index.html' || p === '') p = '/';
+        if (!p.startsWith('/')) p = '/' + p;
+        document.querySelectorAll('.nav-bar a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === p);
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        const href = a.getAttribute('href');
+        if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
+        const linkUrl = new URL(href, window.location.origin);
+        if (linkUrl.origin !== window.location.origin) return;
+        e.preventDefault();
+        loadPage(linkUrl.pathname);
+    });
+
+    window.addEventListener('popstate', () => {
+        loadPage(location.pathname, false);
+    });
+
+    setActive(location.pathname);
+})();
+</script>
+</body></html>
