@@ -189,7 +189,7 @@
     function loadPage(path, push = true) {
         let url;
         if (path === '/' || path === '/index.html' || path === '') {
-            url = 'index.html';
+            url = '/index.html';
         } else if (path.startsWith('/article-')) {
             url = '/articles' + path + '.html';
         } else {
