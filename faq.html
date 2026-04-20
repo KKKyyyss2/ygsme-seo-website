@@ -50,27 +50,17 @@
         <a href="/ji-shi">技师质量</a>
         <a href="/jia-ge">价格指南</a>
         <a href="/xin-shou">新手指南</a>
+        <a href="/faq">FAQ</a>
     </div>
 </nav>
   <main id="spa-container">
-<section class="keywords">
-            <h2>搜索关键词</h2>
-            <p>金边水汇, 金边按摩, 金边马杀鸡, 柬埔寨会所, 柬埔寨按摩, Phnom Penh spa, 金边洗浴, 金边会所推荐, 金边高端水汇, 会所避坑, 技师质量, 金边夜生活</p>
-        </section>
-
-        <section class="contact">
-            <h2>投稿与合作</h2>
-            <p>欢迎分享你的水汇体验，推荐优质会所。联系：<a href="https://t.me/s/ygsme">@JW469</a> (Telegram)</p>
-        </section>
-    
-
 <header class="page-header">
         <div class="container">
             <h1>❓ 常见问题 (FAQ)</h1>
             <p class="subtitle">金边水汇会所 - 按摩、马杀鸡、洗浴中心</p>
         </div>
     </header>
-        <article>
+<article>
             <p>这里收集了关于金边水汇会所（按摩、马杀鸡、洗浴中心）最常见的问题，帮助你快速了解消费、预约、注意事项等。</p>
 
             <h2>💰 价格相关</h2>
@@ -187,7 +177,6 @@
             </div>
         </article>
 </main>
-
   <footer>
         <div class="container">
             <p>&copy; 2024 金边水汇会所 - 专注柬埔寨金边水汇服务推荐</p>
@@ -198,19 +187,10 @@
 <script>
 (function() {
     const container = document.getElementById('spa-container');
-
     function loadPage(path, push = true) {
-        let url;
-        if (path === '/' || path === '/index.html' || path === '') {
-            url = 'index.html';
-        } else {
-            url = path + '.html';
-        }
+        let url = (path === '/' || path === '/index.html' || path === '') ? 'index.html' : path + '.html';
         fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
-            .then(r => {
-                if (!r.ok) throw new Error('HTTP ' + r.status);
-                return r.text();
-            })
+            .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
             .then(html => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
@@ -222,31 +202,18 @@
             })
             .catch(err => console.error('Page load error:', err));
     }
-
     function setActive(path) {
-        let p = path;
-        if (p === '/index.html' || p === '') p = '/';
-        if (!p.startsWith('/')) p = '/' + p;
-        document.querySelectorAll('.nav-bar a').forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === p);
-        });
+        let p = (path === '/index.html' || path === '') ? '/' : (path.startsWith('/') ? path : '/' + path);
+        document.querySelectorAll('.nav-bar a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === p));
     }
-
     document.addEventListener('click', (e) => {
         const a = e.target.closest('a');
         if (!a) return;
         const href = a.getAttribute('href');
         if (!href || href.startsWith('http') || a.target === '_blank' || href.startsWith('#')) return;
-        const linkUrl = new URL(href, window.location.origin);
-        if (linkUrl.origin !== window.location.origin) return;
-        e.preventDefault();
-        loadPage(linkUrl.pathname);
+        try { const linkUrl = new URL(href, window.location.origin); if (linkUrl.origin !== window.location.origin) return; e.preventDefault(); loadPage(linkUrl.pathname); } catch (err) {}
     });
-
-    window.addEventListener('popstate', () => {
-        loadPage(location.pathname, false);
-    });
-
+    window.addEventListener('popstate', () => loadPage(location.pathname, false));
     setActive(location.pathname);
 })();
 </script>
