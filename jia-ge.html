@@ -233,7 +233,7 @@
     const navLinks = document.querySelectorAll('.nav-bar a');
 
     function loadPage(path, push = true) {
-        // path already is like /article1 (no .html)
+        // path already is like /gao-duan (no .html)
         const url = path + '.html'; // fetch the .html file under the hood
         fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
             .then(r => {

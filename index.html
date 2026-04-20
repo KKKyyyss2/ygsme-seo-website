@@ -43,11 +43,11 @@
     <nav class="nav-bar">
         <div class="container">
             <a href="/">首页</a>
-            <a href="/article1">高端推荐</a>
-            <a href="/article2">避坑指南</a>
-            <a href="/article3">技师质量</a>
-            <a href="/article4">价格指南</a>
-            <a href="/article5">新手指南</a>
+            <a href="/gao-duan">高端推荐</a>
+            <a href="/bi-keng">避坑指南</a>
+            <a href="/ji-shi">技师质量</a>
+            <a href="/jia-ge">价格指南</a>
+            <a href="/xin-shou">新手指南</a>
         </div>
     </nav>
     <div id="main-spa-container">
@@ -70,29 +70,29 @@
             <h2>精选文章</h2>
             <div class="posts-grid">
                 <article class="post-card">
-                    <h3><a href="/article1">2024金边高端水汇会所推荐</a></h3>
+                    <h3><a href="/gao-duan">2024金边高端水汇会所推荐</a></h3>
                     <p>盘点金边最高端的按摩会所、马杀鸡场所，技师质量、服务项目一览。</p>
-                    <a href="/article1" class="read-more">阅读全文 →</a>
+                    <a href="/gao-duan" class="read-more">阅读全文 →</a>
                 </article>
                 <article class="post-card">
-                    <h3><a href="/article2">水汇会所避坑指南</a></h3>
+                    <h3><a href="/bi-keng">水汇会所避坑指南</a></h3>
                     <p>如何避免价格陷阱、货不对板？老司机分享实战经验。</p>
-                    <a href="/article2" class="read-more">阅读全文 →</a>
+                    <a href="/bi-keng" class="read-more">阅读全文 →</a>
                 </article>
                 <article class="post-card">
-                    <h3><a href="/article3">技师质量Top5会所</a></h3>
+                    <h3><a href="/ji-shi">技师质量Top5会所</a></h3>
                     <p>盘点金边技师质量最高的5家马杀鸡会所，颜值、服务双在线。</p>
-                    <a href="/article3" class="read-more">阅读全文 →</a>
+                    <a href="/ji-shi" class="read-more">阅读全文 →</a>
                 </article>
                 <article class="post-card">
-                    <h3><a href="/article4">2024金边水汇价格指南</a></h3>
+                    <h3><a href="/jia-ge">2024金边水汇价格指南</a></h3>
                     <p>最新价格表、砍价技巧、预算建议，帮你合理消费。</p>
-                    <a href="/article4" class="read-more">阅读全文 →</a>
+                    <a href="/jia-ge" class="read-more">阅读全文 →</a>
                 </article>
                 <article class="post-card">
-                    <h3><a href="/article5">新手第一次去水汇</a></h3>
+                    <h3><a href="/xin-shou">新手第一次去水汇</a></h3>
                     <p>从预约到离开，完整流程指南，新手必读。</p>
-                    <a href="/article5" class="read-more">阅读全文 →</a>
+                    <a href="/xin-shou" class="read-more">阅读全文 →</a>
                 </article>
             </div>
         </section>
@@ -123,7 +123,7 @@
     const navLinks = document.querySelectorAll('.nav-bar a');
 
     function loadPage(path, push = true) {
-        // path already is like /article1 (no .html)
+        // path already is like /gao-duan (no .html)
         const url = path + '.html'; // fetch the .html file under the hood
         fetch(url, {headers: {'X-Requested-With': 'XMLHttpRequest'}})
             .then(r => {
