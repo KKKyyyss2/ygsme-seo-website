@@ -9,9 +9,11 @@ Sitemap: https://xko1.com/sitemap.xml
 # Disallow: /private
 
 # 主要页面加快收录
-Allow: /index.html
-Allow: /article1.html
-Allow: /article2.html
-Allow: /article3.html
-Allow: /article4.html
-Allow: /article5.html
+Allow: /
+Allow: /articles/
+Allow: /gao-duan
+Allow: /bi-keng
+Allow: /ji-shi
+Allow: /jia-ge
+Allow: /xin-shou
+Allow: /faq
