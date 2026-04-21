@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# 网站地图
+Sitemap: https://xko1.com/sitemap.xml
+
+# 主要页面加快收录
+Allow: /index.html
+Allow: /pages/gao-duan.html
+Allow: /pages/bi-keng.html
+Allow: /pages/ji-shi.html
+Allow: /pages/jia-ge.html
+Allow: /pages/xin-shou.html
+Allow: /pages/faq.html
+Allow: /posts/
