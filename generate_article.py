@@ -61,7 +61,7 @@ ARTICLE_TAGS = [
 ]
 
 # ============ GitHub 配置 ============
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = "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"
 GITHUB_REPO = "KKKyyyss2/ygsme-seo-website"
 GITHUB_BRANCH = "main"
 
